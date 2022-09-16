@@ -45,7 +45,7 @@
           <div>
               <svg width="20" height="20" viewPort="0 0 20 20" version="1.1"
                    xmlns="http://www.w3.org/2000/svg">
-                  <polygon points="0 20, 10 0, 20 20" stroke="rgba(128,0,106,1)" fill="rgba(128,0,106,0.4)" stroke-width="2"/>
+                   <polygon points="0 20, 10 0, 20 20" stroke="rgba(128,0,106,1)" fill="rgba(128,0,106,0.4)" stroke-width="2"/>
               </svg>
               50-Year Warnings <input id="stp-50-toggle" class="toggle-layer" type="checkbox" data-toggle="toggle" data-size="mini">
           </div>
@@ -81,9 +81,13 @@
               <br>
               {% gizmo select_input regions %}
           </div>
-      </div>
-  </div>
-  <img id="featureLoader" style="display: none; position:fixed; z-index: 100; left : 0; bottom : 0; right : 0; top : 0; margin:auto;" src="{% static base_name|add:'/images/loader2.gif' %}">
+          <div>
+              <br>
+               {% gizmo select_input basins %}
+          </div>
+    </div>
+</div>
+<img id="featureLoader" style="..." src="{% static base_name|add:'/images/loader2.gif' %}">
 {% endblock %}
 
 {% block header_buttons %}
@@ -117,10 +121,6 @@
     <a data-toggle="modal" data-target="#graph"><span class="glyphicon glyphicon-globe"></span></a>
   </div>
 
-  <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="View Table of Contents">
-    <a data-toggle="modal" data-target="#toc_modal"><span class="glyphicon glyphicon-list-alt"></span></a>
-  </div>
-
   <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="About">
     <a data-toggle="modal" data-target="#about"><span class="glyphicon glyphicon-info-sign"></span></a>
   </div>
@@ -140,6 +140,7 @@
                           <img class="obslogos" src="{% static base_name|add:'/images/byu_logo.png' %}">
                           <img class="obslogos" src="{% static base_name|add:'/images/my-icon-inamhi.png' %}">
                           <img class="obslogos" src="{% static base_name|add:'/images/Servir_logo.jpeg' %}">
+                            <img class="obslogos" src="{% static base_name|add:'/images/EcoCiencia.png' %}">
                         </div>
                     </div>
                 </div>
@@ -202,9 +203,10 @@
           <div id="watershed-info" class="col-md-8"></div>
           <div class="col-md-4">
             <div align="right">
+                <img class="obslogos" src="{% static base_name|add:'/images/my-icon-inamhi.png' %}">
+                <img class="obslogos" src="{% static base_name|add:'/images/Servir_logo.jpeg' %}">
               <img class="logos" src="{% static base_name|add:'/images/byu_logo.png' %}">
-              <img class="logos" src="{% static base_name|add:'/images/glofas_logo.png' %}">
-              <img class="logos" src="{% static base_name|add:'/images/copernicus_logo.png' %}">
+                <img class="obslogos" src="{% static base_name|add:'/images/EcoCiencia.png' %}">
             </div>
           </div>
         </div>
@@ -290,24 +292,30 @@
       </div>
       <div class="modal-body">
         <p id="overview"><b>
-          This web application was created to allow users to visualize hydrologic model results
-          from different sources. It currently displays GloFAS and LDAS model results.
-        </b></p>
-        <h3>How it works</h3>
-        <h6>1. Click on Get Started.</h6>
-        <h6>2. Select a hydrologic model and a corresponding watershed of interest.</h6>
-        <h6>3. Once you click select a watershed, the map will automatically zoom to that specific watershed.</h6>
-        <h6>4. Click on any of the stream reaches within the watershed.</h6>
-        <h6>6. A hydrograph for the selected reach with the most current streamflow result will be displayed
-          in the graph area next to the map.</h6>
-        <h6>7. If previous dates are available, the Select Date dropdown will be displayed on top of the graph.
-          Select any of the available dates to display the forecast for that specific date in the graph.</h6>
-        <h6>8. Click the close button to exit the application.</h6>
+          Hydroviewer Ecuador es una app que permite la visualizacion de pronosticos de caudal para cualquier rio localizado en Ecuador.
 
-        <h5>Additional Resources:</h5>
+        </b>
+        </p>
+          <p>Los usuarios pueden hacer clic en cualquier rio del mapa para obtener datos de pronostico de caudal.</p>
+          <ol>
+            <li> La primera pestaña muestra un gráfico de los datos históricos observados, la simulación histórica de GEOGloWS ECMWF Streamflow Prediction Tool, y el hidrograma simulado durante 35 años desde 1980 hasta 2015.</li>
+            <li> La segunda pestaña muestra el análisis visual incluido en Hydrostats. Incluye gráficas para el caudal medio diario, el caudal medio mensual, el gráfico de dispersión, el gráfico de dispersión en escala logarítmica, el análisis de volumen para el volumen corregido simulado, simulado y observado.</li>
+            <li> La tercera pestaña incluye un reporte con una lista predefinida de métricas. También le permite seleccionar un conjunto de métricas.</li>
+            <li>La cuarta pestaña muestra un gráfico con los datos de pronóstico de la Herramienta de predicción de caudales de GEOGloWS ECMWF.</li>
+          </ol>
+
+           <p style="color:#e61e29;">Disclaimer: El usuario debe considerar que estas simulaciones y pronósticos son una referencia
+              que utiliza la herramienta de predicción del GEOGloWS ECMWF para estimar el rango más probable de caudales
+               por encima o debajo del promedio histórico simulado.
+           </p>
+
+           <ol style="color:#e61e29;">
+             <li> El usuario debe tener en cuenta la probabilidad de que una predicción no sea siempre  correcta.</li>
+             <li>El usuario de esta herramienta acepta de antemano la forma y uso de la información.</li>
+           </ol style="color:#e61e29;">
+
+        <h5>Recursos Adicionales:</h5>
         <p><a href="https://www.ecmwf.int/en/about/what-we-do/global-forecasts" target="_blank">ECMWF Global Forecasts</a></p>
-        <p><a href="http://rapid-hub.org/" target="_blank">RAPID River Routing Model</a></p>
-        <p><a href="https://streamflow-prediction-tool.readthedocs.io/en/latest/" target="_blank">StreamFlow Prediction Tool</a></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -316,51 +324,6 @@
   </div>
 </div>
 
-<!-- Table of Contents Modal -->
-<div id="toc_modal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Table of Contents</h4>
-      </div>
-      <div class="modal-body tree">
-        <!-- List group -->
-        <ul class="list-group">
-          <li class="list-group-item">
-            Accumulated Rainfall
-            <div class="pull-right">
-              <input id="wmsToggle0" name="AccRainEGE" type="checkbox" onclick="toggleAcc(0);"/>
-              <label for="AccRainEGE" class="label-default"></label>
-            </div>
-          </li>
-          <li class="list-group-item">
-            Rainfall Probability > 50mm
-            <div class="pull-right">
-              <input id="wmsToggle1" name="EGE_probRgt50" type="checkbox" onclick="toggleAcc(1);"/>
-              <label for="EGE_probRgt50" class="label-default"></label>
-            </div>
-          </li>
-          <li class="list-group-item">
-            Rainfall Probability > 150mm
-            <div class="pull-right">
-              <input id="wmsToggle2" name="EGE_probRgt150" type="checkbox" onclick="toggleAcc(2);"/>
-              <label for="EGE_probRgt150" class="label-default"></label>
-            </div>
-          </li>
-          <li class="list-group-item">
-            Rainfall Probability > 300mm
-            <div class="pull-right">
-              <input id="wmsToggle3" name="EGE_probRgt300" type="checkbox" onclick="toggleAcc(3);"/>
-              <label for="EGE_probRgt300" class="label-default"></label>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 {% endblock %}

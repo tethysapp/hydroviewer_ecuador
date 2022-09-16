@@ -252,6 +252,14 @@ def ecmwf(request):
 		original=True,
 		options=[(region_index[opt]['name'], opt) for opt in region_index]
 	)
+	region_index2 = json.load(open(os.path.join(os.path.dirname(__file__), 'public', 'geojson2', 'index2.json')))
+	basins = SelectInput(
+		display_text='Zoom to a Basin:',
+		name='basins',
+		multiple=False,
+		original=True,
+		options=[(region_index2[opt]['name'], opt) for opt in region_index2]
+	)
 
 	context = {
 		"base_name": base_name,
@@ -263,7 +271,8 @@ def ecmwf(request):
 		"startdateobs": startdateobs,
 		"enddateobs": enddateobs,
 		"date_picker": date_picker,
-		"regions": regions
+		"regions": regions,
+		"basins": basins
 	}
 
 	return render(request, '{0}/ecmwf.html'.format(base_name), context)

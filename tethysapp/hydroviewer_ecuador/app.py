@@ -9,10 +9,10 @@ class Hydroviewer(TethysAppBase):
 
     name = 'HydroViewer Ecuador'
     index = '{0}:home'.format(base_name)
-    icon = '{0}/images/ecuador-icon.png'.format(base_name)
+    icon = '{0}/images/hydro.jpeg'.format(base_name)
     package = '{0}'.format(base_name)
     root_url = base_url
-    color = '#333'
+    color = '#4074dd'
     description = 'This is the Hydroviewer App customized for Ecuador.'
     tags = '"Hydrology", "GEOGloWS", "Hydroviewer", "Ecuador"'
     enable_feedback = False

@@ -177,8 +177,6 @@ function toggleAcc(layerID) {
     }
 }
 
-
-
 function init_map() {
     var base_layer = new ol.layer.Tile({
         source: new ol.source.BingMaps({
@@ -361,13 +359,13 @@ function view_watershed() {
         var subbasin = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '').toLowerCase();
         var watershed_display_name = $('#watershedSelect option:selected').text().split(' (')[0];
         var subbasin_display_name = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '');
-        $("#watershed-info").append('<h3>Current Watershed: ' + watershed_display_name + '</h3><h5>Subbasin Name: ' + subbasin_display_name);
+        $("#watershed-info").append('<h3>Region: ' + watershed_display_name + '</h3><h5>Country: ' + subbasin_display_name + '</h5>');
 
         var layerName = workspace + ':' + watershed + '-' + subbasin + '-geoglows-drainage_line';
         wmsLayer = new ol.layer.Image({
             source: new ol.source.ImageWMS({
-                //url: JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "") + '/wms',
-                url: 'https://geoserver.hydroshare.org/geoserver/HS-77951ba9bcf04ac5bc68ae3be2acfd90/wms',
+                url: JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "") + '/wms',
+                //url: 'https://geoserver.hydroshare.org/geoserver/HS-77951ba9bcf04ac5bc68ae3be2acfd90/wms',
                 //params: { 'LAYERS': layerName },
                 params: { 'LAYERS': 'south_america-ecuador-geoglows-drainage_line' },
                 serverType: 'geoserver',
@@ -382,8 +380,8 @@ function view_watershed() {
 
         wmsLayer2 = new ol.layer.Image({
             source: new ol.source.ImageWMS({
-                //url: JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "")+'/wms',
-                url: 'https://geoserver.hydroshare.org/geoserver/HS-77951ba9bcf04ac5bc68ae3be2acfd90/wms',
+                url: JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "")+'/wms',
+                //url: 'https://geoserver.hydroshare.org/geoserver/HS-77951ba9bcf04ac5bc68ae3be2acfd90/wms',
                 params: {'LAYERS':"Ecuador_Stations_RT"},
                 serverType: 'geoserver',
                 crossOrigin: 'Anonymous'
@@ -396,8 +394,8 @@ function view_watershed() {
         map.addLayer(wmsLayer2);
 
         $loading.addClass('hidden');
-        //var ajax_url = JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "") + '/' + workspace + '/' + watershed + '-' + subbasin + '-drainage_line/wfs?request=GetCapabilities';
-        var ajax_url = 'https://geoserver.hydroshare.org/geoserver/wfs?request=GetCapabilities';
+        var ajax_url = JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "") + '/' + workspace + '/' + watershed + '-' + subbasin + '-drainage_line/wfs?request=GetCapabilities';
+        //var ajax_url = 'https://geoserver.hydroshare.org/geoserver/wfs?request=GetCapabilities';
 
         var capabilities = $.ajax(ajax_url, {
             type: 'GET',
@@ -410,8 +408,8 @@ function view_watershed() {
             success: function() {
                 var x = capabilities.responseText
                     .split('<FeatureTypeList>')[1]
-                    //.split(workspace + ':' + watershed + '-' + subbasin)[1]
-                    .split('HS-77951ba9bcf04ac5bc68ae3be2acfd90:south_america-ecuador-geoglows-drainage_line')[1]
+                    .split(workspace + ':' + watershed + '-' + subbasin)[1]
+                    //.split('HS-77951ba9bcf04ac5bc68ae3be2acfd90:south_america-ecuador-geoglows-drainage_line')[1]
                     .split('LatLongBoundingBox ')[1]
                     .split('/></FeatureType>')[0];
 
@@ -435,7 +433,7 @@ function view_watershed() {
         var subbasin = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '').toLowerCase();
         var watershed_display_name = $('#watershedSelect option:selected').text().split(' (')[0];
         var subbasin_display_name = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '');
-        $("#watershed-info").append('<h3>Current Watershed: ' + watershed_display_name + '</h3><h5>Subbasin Name: ' + subbasin_display_name);
+        $("#watershed-info").append('<h3>Region: ' + watershed_display_name + '</h3><h5>Country: ' + subbasin_display_name + '</h5>');
 
         var layerName = workspace + ':' + watershed + '-' + subbasin + '-drainage_line';
         $.ajax({
@@ -466,8 +464,8 @@ function view_watershed() {
 
                 wmsLayer2 = new ol.layer.Image({
                 	source: new ol.source.ImageWMS({
-                		//url: JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "")+'/wms',
-                		url: 'https://geoserver.hydroshare.org/geoserver/HS-77951ba9bcf04ac5bc68ae3be2acfd90/wms',
+                		url: JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "")+'/wms',
+                		//url: 'https://geoserver.hydroshare.org/geoserver/HS-77951ba9bcf04ac5bc68ae3be2acfd90/wms',
                 		params: {'LAYERS':"Ecuador_Stations_RT"},
                 		serverType: 'geoserver',
                 		crossOrigin: 'Anonymous'
@@ -498,7 +496,7 @@ function view_watershed() {
         var subbasin = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '').toLowerCase();
         var watershed_display_name = $('#watershedSelect option:selected').text().split(' (')[0];
         var subbasin_display_name = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '');
-        $("#watershed-info").append('<h3>Current Watershed: ' + watershed_display_name + '</h3><h5>Subbasin Name: ' + subbasin_display_name);
+        $("#watershed-info").append('<h3>Region: ' + watershed_display_name + '</h3><h5>Country: ' + subbasin_display_name + '</h5>');
 
         var layerName = workspace + ':' + watershed + '-' + subbasin + '-drainage_line';
         $.ajax({
@@ -529,8 +527,8 @@ function view_watershed() {
 
                 wmsLayer2 = new ol.layer.Image({
                 	source: new ol.source.ImageWMS({
-                		//url: JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "")+'/wms',
-                		url: 'https://geoserver.hydroshare.org/geoserver/HS-77951ba9bcf04ac5bc68ae3be2acfd90/wms',
+                		url: JSON.parse($('#geoserver_endpoint').val())[0].replace(/\/$/, "")+'/wms',
+                		//url: 'https://geoserver.hydroshare.org/geoserver/HS-77951ba9bcf04ac5bc68ae3be2acfd90/wms',
                         params: {'LAYERS':"Ecuador_Stations_RT"},
                 		serverType: 'geoserver',
                 		crossOrigin: 'Anonymous'
@@ -1127,6 +1125,8 @@ function map_events() {
                                 var subbasin = (result["features"][0]["properties"]["subbasin"]).toLowerCase();
                             }
 
+                            $("#watershed-info").append('<h5>Reach ID: ' + comid  + '</h5>');
+
                             get_available_dates(model, watershed, subbasin, comid);
                             get_time_series(model, watershed, subbasin, comid, startdate);
                             get_historic_data(model, watershed, subbasin, comid, startdate);
@@ -1395,7 +1395,7 @@ function getRegionGeoJsons() {
 
         var regionStyle = new ol.style.Style({
             stroke: new ol.style.Stroke({
-                color: 'red',
+                color: '#0050a0',
                 width: 3
             })
         });
@@ -1419,6 +1419,41 @@ function getRegionGeoJsons() {
     }
 }
 
+function getBasinGeoJsons() {
+
+    let basins = region_index2[$("#basins").val()]['geojsons'];
+    console.log(basins)
+    for (let i in basins) {
+        var regionsSource = new ol.source.Vector({
+           url: staticGeoJSON2 + basins[i],
+           format: new ol.format.GeoJSON()
+        });
+
+        var regionStyle = new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: '#0050a0',
+                width: 3
+            })
+        });
+
+        var regionsLayer = new ol.layer.Vector({
+            name: 'myRegion',
+            source: regionsSource,
+            style: regionStyle
+        });
+
+        map.getLayers().forEach(function(regionsLayer) {
+        if (regionsLayer.get('name')=='myRegion')
+            map.removeLayer(regionsLayer);
+        });
+        map.addLayer(regionsLayer)
+
+        setTimeout(function() {
+            var myExtent = regionsLayer.getSource().getExtent();
+            map.getView().fit(myExtent, map.getSize());
+        }, 500);
+    }
+}
 
 $('#stp-stream-toggle').on('change', function() {
     wmsLayer.setVisible($('#stp-stream-toggle').prop('checked'))
@@ -1447,3 +1482,4 @@ $('#stp-2-toggle').on('change', function() {
 
 // Regions gizmo listener
 $('#regions').change(function() {getRegionGeoJsons()});
+$('#basins').change(function() {getBasinGeoJsons()});
