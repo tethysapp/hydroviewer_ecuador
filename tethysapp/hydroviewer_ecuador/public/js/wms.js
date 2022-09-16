@@ -1125,7 +1125,7 @@ function map_events() {
                                 var subbasin = (result["features"][0]["properties"]["subbasin"]).toLowerCase();
                             }
 
-                            $("#watershed-info").append('<h5>Reach ID: ' + comid  + '</h5>');
+                            //$("#watershed-info").append('<h5>Reach ID: ' + comid  + '</h5>');
 
                             get_available_dates(model, watershed, subbasin, comid);
                             get_time_series(model, watershed, subbasin, comid, startdate);
