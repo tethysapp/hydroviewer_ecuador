@@ -15,12 +15,12 @@ resource_files += find_resource_files('tethysapp/' + app_package + '/workspaces'
 
 setup(
     name=release_package,
-    version='1.2',
+    version='1.3',
     description='',
     long_description='',
     keywords='"Hydrology", "GEOGloWS", "Hydroviewer", "Ecuador"',
-    author='Jorge Luis Sanchez-Lozano',
-    author_email='jorgessanchez7@gmail.com',
+    author='Jorge Luis Sanchez-Lozano, Karina Larco',
+    author_email='jorgessanchez7@gmail.com, karynina3@gmail.com',
     url='',
     license='',
     packages=find_namespace_packages(),
