@@ -132,7 +132,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close"  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <div class="row">
                     <div id="station-info" class="col-md-8"></div>
                     <div class="col-md-4">
@@ -187,7 +187,7 @@
             </div>
         <div id="info" class="hidden"></div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" style="color:#fcbf10; background-color:#20295c;border-color:#20295c;" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
         </div>
     </div>
@@ -198,7 +198,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" style="color:#fcbf10; background-color:#20295c;border-color:#20295c;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="row">
           <div id="watershed-info" class="col-md-8"></div>
           <div class="col-md-4">
@@ -259,13 +259,13 @@
               <div class="panel-body">
                 <h6>Download Forecast Data</h6>
                 <div id="download_forecast" class="btn-group hidden long-term-select" role="group">
-                  <a class="btn btn-success" role="button" id="submit-download-forecast">
+                  <a class="btn btn-success" style="color:#fcbf10; background-color:#20295c;border-color:#20295c;" role="button" id="submit-download-forecast">
                     <span class="glyphicon glyphicon-play"></span> Download Forecast
                   </a>
                 </div>
                 <h6>Download ERA 5 Data</h6>
                 <div id="download_era_5" class="btn-group hidden" role="group">
-                  <a class="btn btn-info" role="button" id="submit-download-5-csv">
+                  <a class="btn btn-info" style="color:#fcbf10; background-color:#b5001a;border-color:#b5001a;" role="button" id="submit-download-5-csv">
                     <span class="glyphicon glyphicon-play"></span> Download ERA 5 Data
                   </a>
                 </div>
@@ -276,7 +276,7 @@
       </div>
       <div id="info" class="hidden"></div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" style="color:#fcbf10; background-color:#20295c;border-color:#20295c;"  class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -287,38 +287,36 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="about-modal-label">About HydroViewer</h2>
+        <button type="button" style="color:#fcbf10; background-color:#20295c;border-color:#20295c;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="about-modal-label"> <strong> Acerca HydroViewer </strong> </h2>
       </div>
       <div class="modal-body">
         <p id="overview"><b>
-          Hydroviewer Ecuador es una app que permite la visualizacion de pronosticos de caudal para cualquier rio localizado en Ecuador.
+          Hydroviewer-Ecuador es una aplicación que permite la visualización de pronósticos de caudal para cualquier río localizado en Ecuador.
 
         </b>
         </p>
-          <p>Los usuarios pueden hacer clic en cualquier rio del mapa para obtener datos de pronostico de caudal.</p>
+          <p>Los usuarios pueden hacer clic en cualquier río del mapa para obtener datos de pronósticos de caudal.</p>
           <ol>
-            <li> La primera pestaña muestra un gráfico de los datos históricos observados, la simulación histórica de GEOGloWS ECMWF Streamflow Prediction Tool, y el hidrograma simulado durante 35 años desde 1980 hasta 2015.</li>
-            <li> La segunda pestaña muestra el análisis visual incluido en Hydrostats. Incluye gráficas para el caudal medio diario, el caudal medio mensual, el gráfico de dispersión, el gráfico de dispersión en escala logarítmica, el análisis de volumen para el volumen corregido simulado, simulado y observado.</li>
+            <li> La primera pestaña muestra un gráfico de los datos históricos observados, la simulación histórica de GEOGloWS ECMWF Streamflow Prediction Tool, y el hidrograma simulado desde 1980 hasta 2022.</li>
+            <li> La segunda pestaña muestra el análisis visual incluido en Hydrostats. Incluye gráficas para el caudal medio diario, el caudal medio mensual, el gráfico de dispersión, el gráfico de dispersión en escala logarítmica, el análisis de volumen.</li>
             <li> La tercera pestaña incluye un reporte con una lista predefinida de métricas. También le permite seleccionar un conjunto de métricas.</li>
             <li>La cuarta pestaña muestra un gráfico con los datos de pronóstico de la Herramienta de predicción de caudales de GEOGloWS ECMWF.</li>
           </ol>
-
-           <p style="color:#e61e29;">Disclaimer: El usuario debe considerar que estas simulaciones y pronósticos son una referencia
-              que utiliza la herramienta de predicción del GEOGloWS ECMWF para estimar el rango más probable de caudales
-               por encima o debajo del promedio histórico simulado.
-           </p>
-
-           <ol style="color:#e61e29;">
-             <li> El usuario debe tener en cuenta la probabilidad de que una predicción no sea siempre  correcta.</li>
-             <li>El usuario de esta herramienta acepta de antemano la forma y uso de la información.</li>
-           </ol style="color:#e61e29;">
-
         <h5>Recursos Adicionales:</h5>
         <p><a href="https://www.ecmwf.int/en/about/what-we-do/global-forecasts" target="_blank">ECMWF Global Forecasts</a></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <p style="color:#b5001a;"><strong>AVISO LEGAL:<strong/><p/>
+          <p style="color:#b5001a;"> El usuario debe considerar que estas simulaciones y pronósticos son una referencia que utiliza la herramienta de predicción del GEOGloWS ECMWF para estimar el rango más probable de caudales
+              por encima o debajo del promedio histórico simulado.</p>
+           </p>
+          <ol style="color:#b5001a;">
+             <li> El usuario debe tener en cuenta la probabilidad de que una predicción no sea siempre  correcta.</li>
+             <li> El usuario de esta herramienta acepta de antemano la forma y uso de la información.</li>
+           </ol style="color:#b5001a;">
+
+        <button type="button" class="btn btn-default" style="color:#fcbf10; background-color:#20295c;border-color:#20295c;"  data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
