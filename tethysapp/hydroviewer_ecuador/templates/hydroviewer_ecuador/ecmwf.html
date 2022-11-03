@@ -77,16 +77,21 @@
               </svg>
               2-Year Warnings <input id="stp-2-toggle" class="toggle-layer" type="checkbox" data-toggle="toggle" data-size="mini">
           </div>
-          <div>
-              <br>
-              {% gizmo select_input regions %}
-          </div>
-          <div>
-              <br>
-               {% gizmo select_input basins %}
-          </div>
+      <div>
+        <br>
+        {% gizmo select_input regions %}
+      </div>
+      <div>
+        <br>
+        {% gizmo select_input basins %}
+      </div>
+            <div>
+        <br>
+        {% gizmo select_input hidric %}
+      </div>
+
     </div>
-</div>
+  </div>
 <img id="featureLoader" style="..." src="{% static base_name|add:'/images/loader2.gif' %}">
 {% endblock %}
 
@@ -137,10 +142,10 @@
                     <div id="station-info" class="col-md-8"></div>
                     <div class="col-md-4">
                         <div align="right">
-                          <img class="obslogos" src="{% static base_name|add:'/images/byu_logo.png' %}">
-                          <img class="obslogos" src="{% static base_name|add:'/images/my-icon-inamhi.png' %}">
-                          <img class="obslogos" src="{% static base_name|add:'/images/Servir_logo.jpeg' %}">
+                            <img class="obslogos" src="{% static base_name|add:'/images/servir_logo.jpeg' %}">
+                            <img class="obslogos" src="{% static base_name|add:'/images/my-icon-inamhi.png' %}">
                             <img class="obslogos" src="{% static base_name|add:'/images/EcoCiencia.png' %}">
+                            <img class="obslogos" src="{% static base_name|add:'/images/byu_logo.png' %}">
                         </div>
                     </div>
                 </div>
@@ -203,10 +208,10 @@
           <div id="watershed-info" class="col-md-8"></div>
           <div class="col-md-4">
             <div align="right">
+                <img class="obslogos" src="{% static base_name|add:'/images/servir_logo.jpeg' %}">
                 <img class="obslogos" src="{% static base_name|add:'/images/my-icon-inamhi.png' %}">
-                <img class="obslogos" src="{% static base_name|add:'/images/Servir_logo.jpeg' %}">
-              <img class="logos" src="{% static base_name|add:'/images/byu_logo.png' %}">
                 <img class="obslogos" src="{% static base_name|add:'/images/EcoCiencia.png' %}">
+                <img class="logos" src="{% static base_name|add:'/images/byu_logo.png' %}">
             </div>
           </div>
         </div>
@@ -288,7 +293,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" style="color:#fcbf10; background-color:#20295c;border-color:#20295c;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="about-modal-label"> <strong> Acerca HydroViewer </strong> </h2>
+        <h2 class="modal-title" id="about-modal-label" style="color:#20295c;"> <strong> Acerca HydroViewer </strong> </h2>
       </div>
       <div class="modal-body">
         <p id="overview"><b>
@@ -298,10 +303,10 @@
         </p>
           <p>Los usuarios pueden hacer clic en cualquier río del mapa para obtener datos de pronósticos de caudal.</p>
           <ol>
-            <li> La primera pestaña muestra un gráfico de los datos históricos observados, la simulación histórica de GEOGloWS ECMWF Streamflow Prediction Tool, y el hidrograma simulado desde 1980 hasta 2022.</li>
-            <li> La segunda pestaña muestra el análisis visual incluido en Hydrostats. Incluye gráficas para el caudal medio diario, el caudal medio mensual, el gráfico de dispersión, el gráfico de dispersión en escala logarítmica, el análisis de volumen.</li>
-            <li> La tercera pestaña incluye un reporte con una lista predefinida de métricas. También le permite seleccionar un conjunto de métricas.</li>
-            <li>La cuarta pestaña muestra un gráfico con los datos de pronóstico de la Herramienta de predicción de caudales de GEOGloWS ECMWF.</li>
+            <li> La primera pestaña muestra el gráfico del pronóstico que proviene de 51 simulaciones diferentes y una de alta resolución.</li>
+            <li> La segunda pestaña muestra la simulación histórica de los últimos 40 años. </li>
+            <li> La tercera pestaña muestra: curva de duración de caudales, estacionalidad diaria y estacionalidad mensual.</li>
+            <li>La cuarta pestaña permite la descarga de resultados del pronóstico y la simulación histórica.</li>
           </ol>
         <h5>Recursos Adicionales:</h5>
         <p><a href="https://www.ecmwf.int/en/about/what-we-do/global-forecasts" target="_blank">ECMWF Global Forecasts</a></p>
@@ -315,6 +320,16 @@
              <li> El usuario debe tener en cuenta la probabilidad de que una predicción no sea siempre  correcta.</li>
              <li> El usuario de esta herramienta acepta de antemano la forma y uso de la información.</li>
            </ol style="color:#b5001a;">
+
+
+          <div class="modal-footer">
+              <div class="FootNote">
+          <p style ><sup>
+              Fuente: la red de ríos ha sido obtenida con el modelado del GEOGloWS ECMWF;
+              Unidad Hidrográfica 3: MAATE, 2020; Demarcaciones hidrográficas: MAATE, 2014;
+              Estaciones hidrológicas: INAMHI, 2022, División Provincial: CONALI,2022</sup> </p>
+        </div>
+
 
         <button type="button" class="btn btn-default" style="color:#fcbf10; background-color:#20295c;border-color:#20295c;"  data-dismiss="modal">Close</button>
       </div>

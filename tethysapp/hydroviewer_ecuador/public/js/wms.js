@@ -179,10 +179,7 @@ function toggleAcc(layerID) {
 
 function init_map() {
     var base_layer = new ol.layer.Tile({
-        source: new ol.source.BingMaps({
-            key: 'eLVu8tDRPeQqmBlKAjcw~82nOqZJe2EpKmqd-kQrSmg~AocUZ43djJ-hMBHQdYDyMbT-Enfsk0mtUIGws1WeDuOvjY4EXCH-9OK3edNLDgkc',
-            imagerySet: 'Road'
-            //            imagerySet: 'AerialWithLabels'
+        source: new ol.source.OSM({
         })
     });
 
@@ -1422,10 +1419,44 @@ function getRegionGeoJsons() {
 function getBasinGeoJsons() {
 
     let basins = region_index2[$("#basins").val()]['geojsons'];
-    console.log(basins)
     for (let i in basins) {
         var regionsSource = new ol.source.Vector({
            url: staticGeoJSON2 + basins[i],
+           format: new ol.format.GeoJSON()
+        });
+
+        var regionStyle = new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: '#0050a0',
+                width: 3
+            })
+        });
+
+        var regionsLayer = new ol.layer.Vector({
+            name: 'myRegion',
+            source: regionsSource,
+            style: regionStyle
+        });
+
+        map.getLayers().forEach(function(regionsLayer) {
+        if (regionsLayer.get('name')=='myRegion')
+            map.removeLayer(regionsLayer);
+        });
+        map.addLayer(regionsLayer)
+
+        setTimeout(function() {
+            var myExtent = regionsLayer.getSource().getExtent();
+            map.getView().fit(myExtent, map.getSize());
+        }, 500);
+    }
+}
+
+function getHidricGeoJsons() {
+
+    let hidric = region_index3[$("#hidric").val()]['geojsons'];
+    for (let i in hidric) {
+        var regionsSource = new ol.source.Vector({
+           url: staticGeoJSON3 + hidric[i],
            format: new ol.format.GeoJSON()
         });
 
@@ -1461,6 +1492,13 @@ $('#stp-stream-toggle').on('change', function() {
 $('#stp-stations-toggle').on('change', function() {
     wmsLayer2.setVisible($('#stp-stations-toggle').prop('checked'))
 })
+
+$('#stp-stream-toggle').on('change', function() {
+    wmsLayer.setVisible($('#stp-stream-toggle').prop('checked'))
+})
+$('#stp-stations-toggle').on('change', function() {
+    wmsLayer2.setVisible($('#stp-stations-toggle').prop('checked'))
+})
 $('#stp-100-toggle').on('change', function() {
     hundred_year_warning.setVisible($('#stp-100-toggle').prop('checked'))
 })
@@ -1483,3 +1521,4 @@ $('#stp-2-toggle').on('change', function() {
 // Regions gizmo listener
 $('#regions').change(function() {getRegionGeoJsons()});
 $('#basins').change(function() {getBasinGeoJsons()});
+$('#hidric').change(function() {getHidricGeoJsons()});

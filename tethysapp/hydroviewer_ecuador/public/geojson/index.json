@@ -3,6 +3,10 @@
     "name": "Ecuador",
     "geojsons": ["ECUADOR.json"]
   },
+  "provincias": {
+    "name": "PROVINCIAS",
+    "geojsons": ["PROVINCIAS.json"]
+  },
   "azuay": {
     "name": "- Azuay",
     "geojsons": ["Azuay.json"]
