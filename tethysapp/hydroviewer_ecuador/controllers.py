@@ -743,6 +743,11 @@ def get_forecast_ens_data_csv(request):
         subbasin = get_data['subbasin_name']
         comid = get_data['reach_id']
 
+        if get_data['startdate'] != '':
+            startdate = get_data['startdate']
+        else:
+            startdate = 'most_recent'
+
         '''Getting Forecast Stats'''
         ensemble_data_file_path = os.path.join(app.get_app_workspace().path, 'ensemble_data.json')
         ensemble_df = pd.read_json(ensemble_data_file_path, convert_dates=True)
@@ -1041,4 +1046,25 @@ def get_observed_waterlevel_csv(request):
     except Exception as e:
         print(str(e))
         return JsonResponse({'error': 'An unknown error occurred while retrieving the Water Level Data.'})
+
+def user_manual(request):
+    """
+    Controller for the technical manual page.
+    """
+
+    context = {
+        #"base_name": base_name,
+    }
+
+    return render(request, '{0}/user_manual.html'.format(base_name), context)
+def technical_manual(request):
+    """
+    Controller for the technical manual page.
+    """
+
+    context = {
+        #"base_name": base_name,
+    }
+
+    return render(request, '{0}/technical_manual.html'.format(base_name), context)
 

@@ -390,9 +390,9 @@ function view_watershed() {
         var model = $('#model option:selected').text();
         var watershed = $('#watershedSelect option:selected').text().split(' (')[0].replace(' ', '_').toLowerCase();
         var subbasin = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '').toLowerCase();
-        var watershed_display_name = $('#watershedSelect option:selected').text().split(' (')[0];
-        var subbasin_display_name = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '');
-        $("#watershed-info").append('<h3>Region: ' + watershed_display_name + '</h3><h5>Country: ' + subbasin_display_name + '</h5>');
+        watershed_display_name = $('#watershedSelect option:selected').text().split(' (')[0];
+        subbasin_display_name = $('#watershedSelect option:selected').text().split(' (')[1].replace(')', '');
+        //$("#watershed-info").append('<h3>Region: ' + watershed_display_name + '</h3><h5>Country: ' + subbasin_display_name + '</h5>');
 
         var layerName = workspace + ':' + watershed + '-' + subbasin + '-geoglows-drainage_line';
         wmsLayer = new ol.layer.Image({
@@ -1032,8 +1032,12 @@ function map_events() {
                                 var watershed = (result["features"][0]["properties"]["watershed"]).toLowerCase();
                                 var subbasin = (result["features"][0]["properties"]["subbasin"]).toLowerCase();
                             }
+                            var stream = result["features"][0]["properties"]["Name"];
+                            var province = result["features"][0]["properties"]["Provincia"];
 
-                            //$("#watershed-info").append('<h5>Reach ID: ' + comid  + '</h5>');
+                            $("#watershed-info").empty();
+                            $("#watershed-info").append('<h3>Region: ' + watershed_display_name + '</h3><h5>Country: ' + subbasin_display_name + '</h5>');
+                            $("#watershed-info").append('<h5>Reach ID: ' + comid  + '</h5><h5>Stream: ' + stream  + '</h5><h5>Province: '+ province  + '</h5>');
 
                             get_available_dates(model, watershed, subbasin, comid);
                             get_requestData (model, watershed, subbasin, comid, startdate);
